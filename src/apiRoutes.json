@@ -1,0 +1,9 @@
+{
+  "POST" : {
+    "/compile" : "compilationRequest"
+  },
+  
+  "GET" : {
+    "/api" : "testingFunction"
+  }
+}

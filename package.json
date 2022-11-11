@@ -1,0 +1,14 @@
+{
+  "name": "solcompiler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "Navnish Singh",
+  "license": "ISC",
+  "dependencies": {
+    "solc": "^0.8.17"
+  }
+}
