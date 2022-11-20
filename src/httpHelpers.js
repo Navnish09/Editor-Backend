@@ -5,10 +5,20 @@ const { JSON_TYPE } = require("./constants");
  * @param {*} req Request object from the http server
  * @param {*} callback The callback function to be called when the parsing is done
  */
-const getPayloadData = (req, callback) => {
-  req.on("data", (chunk) => {
-    callback(JSON.parse(chunk));
-  });
+const getPayloadData = (req) => {
+  return new Promise((res, rej) => {
+    req.on("data", (chunk) => {
+      // Parse the payload data
+      try {
+        res(JSON.parse(chunk));
+      } catch (error) {
+        // Reject the promise if the payload data is not valid
+        if (error instanceof SyntaxError) {
+          rej("Invalid JSON Payload");
+        }
+      }
+    });
+  })
 }
 
 // =================================================================================================

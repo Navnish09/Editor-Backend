@@ -1,9 +1,10 @@
 {
   "POST" : {
-    "/compile" : "compilationRequest"
+    "/compile" : "compilationRequest",
+    "/submission": "addSubmissionRequest"
   },
   
   "GET" : {
-    "/api" : "testingFunction"
+    "/getSubmissions" : "getSubmissionsRequest"
   }
 }

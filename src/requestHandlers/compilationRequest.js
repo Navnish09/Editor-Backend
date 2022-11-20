@@ -1,8 +1,9 @@
 const { compileCode } = require("../compiler");
+const { RESPONSE_MESSAGES } = require("../constants");
 const { getPayloadData, sendError, sendSuccessResponse } = require("../httpHelpers");
 
 const compilationRequest = (req, res) => {
-  getPayloadData(req, (data) => {
+  getPayloadData(req).then((data) => {
     const { code } = data;
 
     // Compile the code if it exists
@@ -14,10 +15,11 @@ const compilationRequest = (req, res) => {
       });
 
     } else {
-      sendError(res, "No code provided", 400);
+      sendError(res, RESPONSE_MESSAGES.NO_CODE, 400);
     }
+  }).catch((error) => {
+    sendError(res, error, 400);
   });
-
 }
 
 module.exports = compilationRequest;
