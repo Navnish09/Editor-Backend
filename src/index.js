@@ -7,26 +7,26 @@ const apiRoutes = require("./apiRoutes.json");
 const responseFunctions = require("./requestHandlers");
 
 // Check if the current process is the master process
-if (cluster.isPrimary) {
-  const numCPUs = require("os").cpus().length;
+// if (cluster.isPrimary) {
+//   const numCPUs = require("os").cpus().length;
 
-  console.log(`Primary ${process.pid} is running`);
+//   console.log(`Primary ${process.pid} is running`);
 
-  // Fork workers.
-  for (let i = 0; i < numCPUs / 2; i++) {
-    cluster.fork();
-  }
+//   // Fork workers.
+//   for (let i = 0; i < numCPUs / 2; i++) {
+//     cluster.fork();
+//   }
 
-  cluster.on("online", (worker) => {
-    console.log(`Worker ${worker.process.pid} is online`);
-  });
+//   cluster.on("online", (worker) => {
+//     console.log(`Worker ${worker.process.pid} is online`);
+//   });
 
-  cluster.on('exit', (worker) => {
-    console.log(`Worker ${worker.process.pid} died. Restarting...`);
-    cluster.fork();
-  });
+//   cluster.on('exit', (worker) => {
+//     console.log(`Worker ${worker.process.pid} died. Restarting...`);
+//     cluster.fork();
+//   });
 
-} else {
+// } else {
 
   const { connectToDB } = require("./db");
 
@@ -55,4 +55,4 @@ if (cluster.isPrimary) {
   server.listen(3003, () => {
     console.log(`Server running on port 3003 with process id ${process.pid}`);
   });
-}
+// }
