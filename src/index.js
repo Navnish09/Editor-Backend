@@ -31,28 +31,28 @@ if (cluster.isPrimary) {
   const { connectToDB } = require("./db");
 
   // Connect to mongo db
-  connectToDB().then(() => {
-    // Create a server object
-    const server = http.createServer((req, res) => {
+  connectToDB()
 
-      res.setHeader('Access-Control-Allow-Origin', "*");
+  // Create a server object
+  const server = http.createServer((req, res) => {
 
-      req.setEncoding("utf8");
+    res.setHeader('Access-Control-Allow-Origin', "*");
 
-      const responseFunctionKey = apiRoutes[req.method]?.[req.url];
+    req.setEncoding("utf8");
 
-      if (responseFunctionKey) {
-        const responseFunction = responseFunctions[responseFunctionKey];
-        responseFunction(req, res);
-      } else {
-        res.writeHead(404, JSON_TYPE);
-        res.end(JSON.stringify({ message: RESPONSE_MESSAGES.NOT_FOUND }));
-      }
-    });
+    const responseFunctionKey = apiRoutes[req.method]?.[req.url];
 
-    // Start the server on port 3003
-    server.listen(3003, () => {
-      console.log(`Server running on port 3003 with process id ${process.pid}`);
-    });
+    if (responseFunctionKey) {
+      const responseFunction = responseFunctions[responseFunctionKey];
+      responseFunction(req, res);
+    } else {
+      res.writeHead(404, JSON_TYPE);
+      res.end(JSON.stringify({ message: RESPONSE_MESSAGES.NOT_FOUND }));
+    }
+  });
+
+  // Start the server on port 3003
+  server.listen(3003, () => {
+    console.log(`Server running on port 3003 with process id ${process.pid}`);
   });
 }
