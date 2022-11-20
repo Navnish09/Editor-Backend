@@ -13,7 +13,7 @@ const responseFunctions = require("./requestHandlers");
 //   console.log(`Primary ${process.pid} is running`);
 
 //   // Fork workers.
-//   for (let i = 0; i < numCPUs / 2; i++) {
+//   for (let i = 0; i < numCPUs; i++) {
 //     cluster.fork();
 //   }
 
@@ -28,11 +28,10 @@ const responseFunctions = require("./requestHandlers");
 
 // } else {
 
-  const { connectToDB } = require("./db");
+const { connectToDB } = require("./db");
 
-  // Connect to mongo db
-  connectToDB()
-
+// Connect to mongo db
+connectToDB().then(() => {
   // Create a server object
   const server = http.createServer((req, res) => {
 
@@ -55,4 +54,5 @@ const responseFunctions = require("./requestHandlers");
   server.listen(3003, () => {
     console.log(`Server running on port 3003 with process id ${process.pid}`);
   });
+});
 // }
