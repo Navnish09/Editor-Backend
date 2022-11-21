@@ -6,7 +6,7 @@ const getSubmissionsRequest = (req, res) => {
   const Submissions = getDB().collection("Submissions");
 
   getPayloadData(req).then(async (data) => {
-    const { name, email, code } = data;
+    const { name, email, code, language } = data;
 
     // Payload validation check
     if (!name || !email) {
@@ -22,7 +22,8 @@ const getSubmissionsRequest = (req, res) => {
         const insertedDocument = await Submissions.insertOne({
           name,
           email,
-          code: code || ""
+          code: code || "",
+          language
         });
 
         // Send the response to the client if the document is inserted successfully
