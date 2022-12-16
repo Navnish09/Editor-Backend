@@ -27,6 +27,8 @@ const addUserRequest = async (req, res) => {
         });
       }
     });
+  }else{
+    sendError(res, "Email not provided", 400);
   }
 }
 
