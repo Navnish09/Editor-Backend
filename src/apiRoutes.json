@@ -5,6 +5,11 @@
   },
   
   "GET" : {
-    "/getSubmissions" : "getSubmissionsRequest"
+    "/getSubmissions" : "getSubmissionsRequest",
+    "/addUser" : "addUserRequest"
+  },
+
+  "DELETE" : {
+    "/deleteSubmission" : "deleteSubmissionRequest"
   }
 }

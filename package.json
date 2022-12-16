@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "nodemon --watch src src/index.js"
   },
   "author": "Navnish Singh",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
     "mongodb": "^4.11.0",
+    "nodemon": "^2.0.20",
     "solc": "^0.8.17"
   }
 }

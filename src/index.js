@@ -35,13 +35,18 @@ const { connectToDB } = require("./db");
 connectToDB()
 // Create a server object
 const server = http.createServer((req, res) => {
-
+  let endpoint = req.url;
   res.setHeader('Access-Control-Allow-Origin', "*");
 
   req.setEncoding("utf8");
 
-  const responseFunctionKey = apiRoutes[req.method]?.[req.url];
+  // Remove the query params from the endpoint
+  if(endpoint.includes("?")){
+    endpoint = endpoint.split("?")[0];
+  }
 
+  const responseFunctionKey = apiRoutes[req.method]?.[endpoint];
+  console.log(responseFunctionKey, req.method, req.url);
   if (responseFunctionKey) {
     const responseFunction = responseFunctions[responseFunctionKey];
     responseFunction(req, res);
