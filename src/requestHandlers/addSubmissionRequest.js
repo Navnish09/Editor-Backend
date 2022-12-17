@@ -2,11 +2,11 @@ const { getDB } = require("../db");
 const { RESPONSE_MESSAGES } = require("../constants");
 const { sendSuccessResponse, getPayloadData, sendError } = require("../httpHelpers");
 
-const getSubmissionsRequest = (req, res) => {
+const addSubmissionRequest = (req, res) => {
   const Submissions = getDB().collection("Submissions");
 
   getPayloadData(req).then(async (data) => {
-    const { name, email, code, language } = data;
+    const { email, code, language } = data;
 
     // Payload validation check
     if (!email) {
@@ -17,7 +17,6 @@ const getSubmissionsRequest = (req, res) => {
       try {
         // Inert the submission into the database
         const insertedDocument = await Submissions.insertOne({
-          name,
           email,
           code: code || "",
           language
@@ -38,4 +37,4 @@ const getSubmissionsRequest = (req, res) => {
   });
 }
 
-module.exports = getSubmissionsRequest;
+module.exports = addSubmissionRequest;
