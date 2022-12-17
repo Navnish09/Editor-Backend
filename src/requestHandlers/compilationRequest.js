@@ -1,4 +1,4 @@
-const { compileCode } = require("../compiler");
+const { compileCode } = require("../solidityCompiler");
 const { RESPONSE_MESSAGES } = require("../constants");
 const { getPayloadData, sendError, sendSuccessResponse } = require("../httpHelpers");
 
@@ -15,10 +15,13 @@ const compilationRequest = (req, res) => {
       });
 
     } else {
-      sendError(res, RESPONSE_MESSAGES.NO_CODE, 400);
+      sendError(res, {
+        message: RESPONSE_MESSAGES.NO_CODE,
+        statusCode: 400
+      });
     }
   }).catch((error) => {
-    sendError(res, error, 400);
+    sendError(res, { message: error, statusCode: 400 });
   });
 }
 

@@ -9,12 +9,9 @@ const getSubmissionsRequest = (req, res) => {
     const { name, email, code, language } = data;
 
     // Payload validation check
-    if (!name || !email) {
-      // Validation for name
-      if (!name) sendError(res, RESPONSE_MESSAGES.NO_NAME, 400);
-
+    if (!email) {
       // Validation for email
-      if (!email) sendError(res, RESPONSE_MESSAGES.NO_EMAIL, 400);
+      if (!email) sendError(res, { message: RESPONSE_MESSAGES.NO_EMAIL, statusCode: 400 });
 
     } else {
       try {
@@ -37,7 +34,7 @@ const getSubmissionsRequest = (req, res) => {
       }
     }
   }).catch((error) => {
-    sendError(res, error, 400);
+    sendError(res, { message: error, statusCode: 400 });
   });
 }
 

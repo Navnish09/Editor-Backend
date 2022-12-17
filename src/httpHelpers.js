@@ -36,9 +36,9 @@ const sendSuccessResponse = (res, data) => {
  * @param {*} req Request object from the http server
  * @param {*} error 
  */
-const sendError = (res, error, errorCode) => {
-  res.writeHead(errorCode, JSON_TYPE);
-  res.end(JSON.stringify({ message: error }));
+const sendError = (res, {message, statusCode, errorCode=""}) => {
+  res.writeHead(statusCode, JSON_TYPE);
+  res.end(JSON.stringify({ message, code: errorCode }));
 }
 
 module.exports = {

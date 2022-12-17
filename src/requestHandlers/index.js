@@ -3,11 +3,17 @@ const getSubmissionsRequest = require("./getSubmissionsRequest");
 const addSubmissionRequest = require("./addSubmissionRequest");
 const deleteSubmissionRequest = require("./deleteSubmissionRequest");
 const addUserRequest = require("./addUserRequest");
+const validateUserRequest = require("./validateUserRequest");
+const registerUserRequest = require("./registerUserRequest");
+const loginUserRequest = require("./loginUserRequest");
 
 module.exports = {
-  compilationRequest,
-  getSubmissionsRequest,
+  addUserRequest,
   addSubmissionRequest,
+  compilationRequest,
   deleteSubmissionRequest,
-  addUserRequest
+  getSubmissionsRequest,
+  loginUserRequest,
+  registerUserRequest,
+  validateUserRequest
 }

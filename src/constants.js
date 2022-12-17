@@ -3,17 +3,39 @@ const JSON_TYPE = { 'Content-Type': 'application/json' };
 
 const RESPONSE_MESSAGES = {
   // Error messages
+  EMAIL_NOT_PROVIDED: "Email not provided",
+  EMAIL_ALREADY_EXISTS: "Email already exists",
+  EMAIL_PASSWORD_NOT_PROVIDED : "Email or password not provided",
   NO_CODE: "No code was provided",
   NO_NAME: "No name was provided. Name is a mandatory field for the submission",
   NO_EMAIL: "No email provided. Email is a mandatory field for the submission",
   NOT_FOUND: "Not Found",
+  NO_TOKEN : "No token provided",
+  INVALID_PASSWORD: "Invalid password",
+  USER_NOT_EXISTS: "User does not exist",
+  USER_ALREADY_REGISTERED : "User already registered",
+  UNAUTHORIZED : "Unauthorized",
   
   // Success messages
   SUBMISSION_ADDED: "Submission added successfully",
 }
 
+const ERROR_CODES = {
+  USER_NOT_EXISTS : "USER_NOT_EXISTS",
+  USER_ALREADY_REGISTERED : "USER_ALREADY_REGISTERED",
+  INVALID_PASSWORD : "INVALID_PASSWORD",
+  EMAIL_ALREADY_EXISTS : "EMAIL_ALREADY_EXISTS",
+  EMAIL_NOT_PROVIDED : "EMAIL_NOT_PROVIDED",
+  EMAIL_PASSWORD_NOT_PROVIDED : "EMAIL_PASSWORD_NOT_PROVIDED",
+  NO_CODE : "NO_CODE",
+  NO_NAME : "NO_NAME",
+  NO_EMAIL : "NO_EMAIL",
+  NOT_FOUND : "NOT_FOUND",
+}
+
 module.exports = {
   CONTRACT_NAME,
   JSON_TYPE,
-  RESPONSE_MESSAGES
+  RESPONSE_MESSAGES,
+  ERROR_CODES
 }

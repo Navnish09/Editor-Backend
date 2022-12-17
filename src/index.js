@@ -30,9 +30,12 @@ const responseFunctions = require("./requestHandlers");
 // } else {
 
 const { connectToDB } = require("./db");
+const { sendError } = require("./httpHelpers");
+const auth = require("./authHandler");
 
 // Connect to mongo db
 connectToDB()
+
 // Create a server object
 const server = http.createServer((req, res) => {
   let endpoint = req.url;
@@ -41,15 +44,32 @@ const server = http.createServer((req, res) => {
   req.setEncoding("utf8");
 
   // Remove the query params from the endpoint
-  if(endpoint.includes("?")){
+  if (endpoint.includes("?")) {
     endpoint = endpoint.split("?")[0];
   }
 
-  const responseFunctionKey = apiRoutes[req.method]?.[endpoint];
-  console.log(responseFunctionKey, req.method, req.url);
-  if (responseFunctionKey) {
-    const responseFunction = responseFunctions[responseFunctionKey];
-    responseFunction(req, res);
+  const endpointRouteConfigs = apiRoutes[req.method]?.[endpoint];
+
+  if (endpointRouteConfigs) {
+
+    // Check if the endpoint requires authorization
+    if (endpointRouteConfigs?.auth) {
+      auth(req)
+        .then((decoded) => {
+          req.user = decoded;
+          const responseFunction = responseFunctions[endpointRouteConfigs.route];
+          responseFunction(req, res);
+
+        }).catch((err) => {
+          sendError(res, err);
+        });
+    } else {
+
+      // Call the response function without authorization
+      const responseFunction = responseFunctions[endpointRouteConfigs.route];
+      responseFunction(req, res);
+    }
+
   } else {
     res.writeHead(404, JSON_TYPE);
     res.end(JSON.stringify({ message: RESPONSE_MESSAGES.NOT_FOUND }));

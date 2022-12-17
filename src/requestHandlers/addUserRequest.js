@@ -1,5 +1,6 @@
 
 const url = require('url');
+const { RESPONSE_MESSAGES } = require('../constants');
 const { getDB } = require("../db");
 const { sendSuccessResponse, sendError } = require("../httpHelpers");
 
@@ -12,10 +13,13 @@ const addUserRequest = async (req, res) => {
     const cursor = Users.findOne({
       email: query.email
     });
-    
+
     cursor.then((doc) => {
       if (doc) {
-        sendError(res, "User already exists", 400);
+        sendError(res, {
+          message: RESPONSE_MESSAGES.EMAIL_ALREADY_EXISTS,
+          statusCode: 400
+        });
       } else {
         // Add the user email in db
         const insertionCursor = Users.insertOne({
@@ -27,8 +31,11 @@ const addUserRequest = async (req, res) => {
         });
       }
     });
-  }else{
-    sendError(res, "Email not provided", 400);
+  } else {
+    sendError(res, {
+      message: RESPONSE_MESSAGES.EMAIL_NOT_PROVIDED,
+      statusCode: 400
+    });
   }
 }
 

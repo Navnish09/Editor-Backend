@@ -1,15 +1,36 @@
 {
-  "POST" : {
-    "/compile" : "compilationRequest",
-    "/submission": "addSubmissionRequest"
+  "POST": {
+    "/compile": {
+      "route": "compilationRequest",
+      "auth": true
+    },
+    "/submission": {
+      "route": "addSubmissionRequest",
+      "auth": true
+    },
+    "/validateUser": {
+      "route": "validateUserRequest"
+    },
+    "/registerUser": {
+      "route": "registerUserRequest"
+    },
+    "/loginUser": {
+      "route": "loginUserRequest"
+    }
   },
-  
-  "GET" : {
-    "/getSubmissions" : "getSubmissionsRequest",
-    "/addUser" : "addUserRequest"
+  "GET": {
+    "/getSubmissions": {
+      "route": "getSubmissionsRequest",
+      "auth": true
+    },
+    "/addUser": {
+      "route": "addUserRequest"
+    }
   },
-
-  "DELETE" : {
-    "/deleteSubmission" : "deleteSubmissionRequest"
+  "DELETE": {
+    "/deleteSubmission": {
+      "route": "deleteSubmissionRequest",
+      "auth": true
+    }
   }
 }
