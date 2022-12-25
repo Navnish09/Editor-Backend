@@ -16,6 +16,9 @@
     },
     "/loginUser": {
       "route": "loginUserRequest"
+    },
+    "/createQuestion" : {
+      "route": "createQuestionRequest"
     }
   },
   "GET": {
@@ -24,12 +27,17 @@
     },
     "/addUser": {
       "route": "addUserRequest"
+    },
+    "/getQuestions": {
+      "route": "getQuestionsRequest"
     }
   },
   "DELETE": {
     "/deleteSubmission": {
-      "route": "deleteSubmissionRequest",
-      "auth": true
+      "route": "deleteSubmissionRequest"
+    },
+    "/deleteQuestion": {
+      "route": "deleteQuestionRequest"
     }
   }
 }

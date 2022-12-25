@@ -30,7 +30,7 @@ const responseFunctions = require("./requestHandlers");
 // } else {
 
 const { connectToDB } = require("./db");
-const { sendError } = require("./httpHelpers");
+const { sendError, getUrlEndpoint } = require("./httpHelpers");
 const auth = require("./authHandler");
 
 // Connect to mongo db
@@ -38,24 +38,22 @@ connectToDB()
 
 // Create a server object
 const server = http.createServer((req, res) => {
-  let endpoint = req.url;
   res.setHeader('Access-Control-Allow-Origin', "*");
   res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
 
   req.setEncoding("utf8");
 
   // Handle preflight requests
-  if(req.method === "OPTIONS") {
+  if (req.method === "OPTIONS") {
     res.writeHead(200, JSON_TYPE);
     res.end();
     return;
   }
 
   // Remove the query params from the endpoint
-  if (endpoint.includes("?")) {
-    endpoint = endpoint.split("?")[0];
-  }
+  const endpoint = getUrlEndpoint(req.url);
 
+  // Get the route config for the endpoint
   const endpointRouteConfigs = apiRoutes[req.method]?.[endpoint];
 
   if (endpointRouteConfigs) {

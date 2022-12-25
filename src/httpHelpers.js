@@ -41,8 +41,22 @@ const sendError = (res, {message, statusCode, errorCode=""}) => {
   res.end(JSON.stringify({ message, code: errorCode }));
 }
 
+// =================================================================================================
+/**
+ * 
+ */
+const getUrlEndpoint = (url) => {
+  // Remove the query params from the endpoint
+  if (url.includes("?")) {
+    return url.split("?")[0];
+  }
+
+  return url;
+}
+
 module.exports = {
   getPayloadData,
+  getUrlEndpoint,
   sendError,
   sendSuccessResponse
 }

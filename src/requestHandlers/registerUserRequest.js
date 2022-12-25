@@ -1,5 +1,5 @@
 const { getDB } = require("../db");
-const { RESPONSE_MESSAGES, ERROR_CODES } = require("../constants");
+const { RESPONSE_MESSAGES, ERROR_CODES, COLLECTION_NAMES } = require("../constants");
 const { encryptPassword, jwtEncode } = require("../utils");
 const { getPayloadData, sendError, sendSuccessResponse } = require("../httpHelpers");
 
@@ -16,7 +16,7 @@ const registerUserRequest = (req, res) => {
       });
     } else {
       // Check for the user email in db
-      const Users = getDB().collection("Users");
+      const Users = getDB().collection(COLLECTION_NAMES.USERS);
 
       const cursor = Users.findOne({ email });
 

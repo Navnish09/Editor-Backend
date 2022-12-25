@@ -1,9 +1,10 @@
 const { getDB } = require("../db");
-const { RESPONSE_MESSAGES } = require("../constants");
+const { RESPONSE_MESSAGES, COLLECTION_NAMES } = require("../constants");
 const { sendSuccessResponse, getPayloadData, sendError } = require("../httpHelpers");
 
 const addSubmissionRequest = (req, res) => {
-  const Submissions = getDB().collection("Submissions");
+  
+  const Submissions = getDB().collection(COLLECTION_NAMES.SUBMISSIONS);
 
   getPayloadData(req).then(async (data) => {
     const { email, code, language } = data;

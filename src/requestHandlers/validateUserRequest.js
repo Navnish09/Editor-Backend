@@ -1,6 +1,6 @@
 
 const url = require('url');
-const { RESPONSE_MESSAGES, ERROR_CODES } = require('../constants');
+const { RESPONSE_MESSAGES, ERROR_CODES, COLLECTION_NAMES } = require('../constants');
 const { getDB } = require("../db");
 const { sendSuccessResponse, sendError, getPayloadData } = require("../httpHelpers");
 
@@ -11,7 +11,7 @@ const validateUserRequest = async (req, res) => {
     // Compile the code if it exists
     if (email) {
       // Check for the user email in db
-      const Users = getDB().collection("Users");
+      const Users = getDB().collection(COLLECTION_NAMES.USERS);
 
       const cursor = Users.findOne({ email });
 
