@@ -19,8 +19,10 @@ const RESPONSE_MESSAGES = {
   NOT_FOUND: "Not Found",
   NO_TOKEN: "No token provided",
   INVALID_PASSWORD: "Invalid password",
+  INVALID_QUESTION_ID : "Invalid Question Id",
   QUESTION_ADDED: "Question Created successfully",
   QUESTION_DELETED : "Question deleted successfully",
+  QUESTION_NOT_FOUND : "No question found with the given id",
   USER_NOT_EXISTS: "User does not exist",
   USER_ALREADY_REGISTERED: "User already registered",
   UNAUTHORIZED: "Unauthorized",
@@ -33,6 +35,7 @@ const ERROR_CODES = {
   USER_NOT_EXISTS: "USER_NOT_EXISTS",
   USER_ALREADY_REGISTERED: "USER_ALREADY_REGISTERED",
   INVALID_PASSWORD: "INVALID_PASSWORD",
+  INVALID_QUESTION_ID: "INVALID_QUESTION_ID",
   EMAIL_ALREADY_EXISTS: "EMAIL_ALREADY_EXISTS",
   EMAIL_NOT_PROVIDED: "EMAIL_NOT_PROVIDED",
   EMAIL_PASSWORD_NOT_PROVIDED: "EMAIL_PASSWORD_NOT_PROVIDED",
@@ -40,6 +43,7 @@ const ERROR_CODES = {
   NO_NAME: "NO_NAME",
   NO_EMAIL: "NO_EMAIL",
   NOT_FOUND: "NOT_FOUND",
+  QUESTION_NOT_FOUND : "QUESTION_NOT_FOUND",
 }
 
 module.exports = {
