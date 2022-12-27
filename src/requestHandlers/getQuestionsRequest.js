@@ -27,9 +27,9 @@ const getQuestions = async (req, res) => {
       // If no question is found with that id
       if (!doc) {
         sendError(res, {
-          message: RESPONSE_MESSAGES.QUESTION_NOT_FOUND,
+          message: RESPONSE_MESSAGES.INVALID_QUESTION_ID,
           statusCode: 400,
-          errorCode: ERROR_CODES.QUESTION_NOT_FOUND
+          errorCode: ERROR_CODES.INVALID_QUESTION_ID
         });
         return;
       }

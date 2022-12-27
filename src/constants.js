@@ -18,11 +18,14 @@ const RESPONSE_MESSAGES = {
   NO_EMAIL: "No email provided. Email is a mandatory field for the submission",
   NOT_FOUND: "Not Found",
   NO_TOKEN: "No token provided",
+  NO_QUESTION_ID: "No question id provided",
+  NO_SUBMISSIN_ID: "No submission id provided",
   INVALID_PASSWORD: "Invalid password",
-  INVALID_QUESTION_ID : "Invalid Question Id",
+  INVALID_QUESTION_ID: "Invalid Question Id",
+  INVALID_SUBMISSIN_ID: "Invalid submission id",
   QUESTION_ADDED: "Question Created successfully",
-  QUESTION_DELETED : "Question deleted successfully",
-  QUESTION_NOT_FOUND : "No question found with the given id",
+  QUESTION_DELETED: "Question deleted successfully",
+  SUBMISSION_DELETED: "Submission deleted successfully",
   USER_NOT_EXISTS: "User does not exist",
   USER_ALREADY_REGISTERED: "User already registered",
   UNAUTHORIZED: "Unauthorized",
@@ -43,7 +46,7 @@ const ERROR_CODES = {
   NO_NAME: "NO_NAME",
   NO_EMAIL: "NO_EMAIL",
   NOT_FOUND: "NOT_FOUND",
-  QUESTION_NOT_FOUND : "QUESTION_NOT_FOUND",
+  NO_QUESTION_ID: "NO_QUESTION_ID"
 }
 
 module.exports = {

@@ -1,14 +1,14 @@
-const compilationRequest = require("./compilationRequest")
-const getSubmissionsRequest = require("./getSubmissionsRequest");
 const addSubmissionRequest = require("./addSubmissionRequest");
-const deleteSubmissionRequest = require("./deleteSubmissionRequest");
 const addUserRequest = require("./addUserRequest");
-const validateUserRequest = require("./validateUserRequest");
-const registerUserRequest = require("./registerUserRequest");
-const loginUserRequest = require("./loginUserRequest");
+const compilationRequest = require("./compilationRequest")
 const createQuestionRequest = require("./createQuestionRequest");
-const getQuestionsRequest = require("./getQuestionsRequest");
 const deleteQuestionRequest = require("./deleteQuestionRequest");
+const deleteSubmissionRequest = require("./deleteSubmissionRequest");
+const getQuestionsRequest = require("./getQuestionsRequest");
+const getSubmissionsRequest = require("./getSubmissionsRequest");
+const loginUserRequest = require("./loginUserRequest");
+const registerUserRequest = require("./registerUserRequest");
+const validateUserRequest = require("./validateUserRequest");
 
 module.exports = {
   addUserRequest,
